@@ -46,4 +46,9 @@ public class OzPage {
         buttonEnter.click();
         Thread.sleep(2000);
     }
+    public String getErrorMessageLocator(){
+        WebElement errorMessage = driver.findElement(By.xpath((errorMessageLocator)));
+        String actual = errorMessage.getText();
+        return actual;
+    }
 }
