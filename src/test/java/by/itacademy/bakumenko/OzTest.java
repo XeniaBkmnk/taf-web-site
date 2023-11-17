@@ -16,17 +16,14 @@ public class OzTest {
         OzPage ozPage = new OzPage(driver);
         WebElement buttonEnter = driver.findElement(By.xpath(ozPage.buttonEnterLocatorBy));
         buttonEnter.click();
-        Thread.sleep(2000);
         WebElement buttonLoginOption = driver.findElement(By.xpath(ozPage.buttonLoginOptionLocator));
         buttonLoginOption.click();
         WebElement inputEmail = driver.findElement(By.xpath(ozPage.inputEmailLocator));
         inputEmail.sendKeys("test@test");
         WebElement inputPassword = driver.findElement(By.xpath(ozPage.inputPasswordLocator));
         inputPassword.sendKeys("test");
-        Thread.sleep(2000);
         WebElement buttonSubmit = driver.findElement(By.xpath(ozPage.buttonSubmitLocator));
         buttonSubmit.click();
-        Thread.sleep(2000);
         WebElement errorMessage = driver.findElement(By.xpath((ozPage.errorMessageLocator)));
         String actualErrorMessage = errorMessage.getText();
         Assertions.assertEquals("Введите корректный адрес электронной почты", actualErrorMessage);
