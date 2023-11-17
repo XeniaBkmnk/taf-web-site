@@ -13,8 +13,8 @@ public class OzTest {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://oz.by/");
-        OzPage ozPage = new OzPage();
-        WebElement buttonEnter = driver.findElement(By.xpath(ozPage.buttonEnterLocator));
+        OzPage ozPage = new OzPage(driver);
+        WebElement buttonEnter = driver.findElement(By.xpath(ozPage.buttonEnterLocatorBy));
         buttonEnter.click();
         Thread.sleep(2000);
         WebElement buttonLoginOption = driver.findElement(By.xpath(ozPage.buttonLoginOptionLocator));
@@ -38,9 +38,9 @@ public class OzTest {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://oz.by/");
-        OzPage ozPage = new OzPage();
-        WebElement buttonEnter = driver.findElement(By.xpath(ozPage.buttonEnterLocator));
-        buttonEnter.click();
+        OzPage ozPage = new OzPage(driver);
+        WebElement buttonLocator = driver.findElement(By.xpath(ozPage.buttonEnterLocatorBy));
+        buttonLocator.click();
         Thread.sleep(2000);
         WebElement buttonLoginOption = driver.findElement(By.xpath(ozPage.buttonLoginOptionLocator));
         buttonLoginOption.click();
@@ -56,7 +56,19 @@ public class OzTest {
         String actualErrorMessage = errorMessage.getText();
         Assertions.assertEquals("Неверный пароль. Если вы потеряли или забыли пароль — восстановите его", actualErrorMessage);
         driver.close();
+    }
 
-
+    @Test
+    public void testOzEntry() throws InterruptedException {
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://oz.by/");
+        OzPage ozPage = new OzPage(driver);
+        Thread.sleep(1000);
+        WebElement enterButtonWebElement = driver.findElement(By.xpath(ozPage.buttonEnterLocatorBy));
+        enterButtonWebElement.click();
+        WebElement enterTitleOauthFormWebElement = driver.findElement(By.xpath(ozPage.enterTitleOauthFormLocator));
+        Assertions.assertEquals("Вход", enterTitleOauthFormWebElement.getText());
+        driver.close();
     }
 }
