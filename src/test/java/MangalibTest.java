@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class MangalibTest {
     @Test
-    public void TestMangalibLogin() throws InterruptedException {
+    public void testMangalibLogin() throws InterruptedException {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://mangalib.me/");
