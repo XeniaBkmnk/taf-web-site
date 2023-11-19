@@ -14,7 +14,6 @@ public class OzTest {
         driver.manage().window().maximize();
         driver.get("https://oz.by/");
         OzPage ozPage = new OzPage(driver);
-
         ozPage.clickButtonEnterLoginLocatorBy();
         ozPage.clickButtonLoginOptionLocator();
         ozPage.sendKeysInputEmailLocator("test@test");
