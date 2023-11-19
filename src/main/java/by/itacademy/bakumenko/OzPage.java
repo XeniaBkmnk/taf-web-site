@@ -20,14 +20,14 @@ public class OzPage {
     }
 
     public void clickButtonEnterLoginLocatorBy() throws InterruptedException {
-      WebElement buttonEnter = driver.findElement(By.xpath(buttonEnterLocatorBy));
+        WebElement buttonEnter = driver.findElement(By.xpath(buttonEnterLocatorBy));
         buttonEnter.click();
         Thread.sleep(2000);
     }
 
     public void clickButtonLoginOptionLocator() {
-      WebElement buttonEnter =  driver.findElement(By.xpath(buttonLoginOptionLocator));
-         buttonEnter.click();
+        WebElement buttonEnter = driver.findElement(By.xpath(buttonLoginOptionLocator));
+        buttonEnter.click();
     }
 
     public void sendKeysInputEmailLocator(String newEmail) {
@@ -36,19 +36,26 @@ public class OzPage {
     }
 
     public void sendKeysInputPasswordLocator(String newPassword) throws InterruptedException {
-        WebElement element =  driver.findElement(By.xpath(inputPasswordLocator));
+        WebElement element = driver.findElement(By.xpath(inputPasswordLocator));
         element.sendKeys(newPassword);
         Thread.sleep(2000);
     }
 
     public void clickButtonSubmitLocator() throws InterruptedException {
-        WebElement buttonEnter =driver.findElement(By.xpath((buttonSubmitLocator)));
+        WebElement buttonEnter = driver.findElement(By.xpath((buttonSubmitLocator)));
         buttonEnter.click();
         Thread.sleep(2000);
     }
-    public String getErrorMessageLocator(){
+
+    public String getErrorMessageLocator() {
         WebElement errorMessage = driver.findElement(By.xpath((errorMessageLocator)));
         String actual = errorMessage.getText();
+        return actual;
+    }
+
+    public String getEnterTitleOauthFormLocator() {
+        WebElement enterTitleOauthFormWebElement = driver.findElement(By.xpath(enterTitleOauthFormLocator));
+        String actual = enterTitleOauthFormWebElement.getText();
         return actual;
     }
 }
