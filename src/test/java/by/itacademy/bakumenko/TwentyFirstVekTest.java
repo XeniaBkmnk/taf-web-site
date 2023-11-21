@@ -13,20 +13,17 @@ public class TwentyFirstVekTest {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://www.21vek.by/");
-        TwentyFirstVekPage twentyFirstVekPage = new TwentyFirstVekPage();
-        WebElement enterButtonCookieWebElement = driver.findElement(By.xpath(twentyFirstVekPage.enterButtonCookie));
-        enterButtonCookieWebElement.click();
-        WebElement accountButtonWebElement = driver.findElement(By.xpath(twentyFirstVekPage.accountButton));
-        accountButtonWebElement.click();
-        WebElement enterButtonWebElement = driver.findElement(By.xpath(twentyFirstVekPage.enterButton));
-        enterButtonWebElement.click();
-        Thread.sleep(2000);
-        WebElement buttonModuleWebElement = driver.findElement(By.xpath(twentyFirstVekPage.buttonModule));
-        buttonModuleWebElement.click();
-        WebElement errorMessageLoginWebElement = driver.findElement(By.xpath(twentyFirstVekPage.errorMessageLogin));
-        Assertions.assertEquals("Электронная почта не указана", errorMessageLoginWebElement.getText());
-        WebElement errorMessagePasswordWebElement = driver.findElement(By.xpath(twentyFirstVekPage.errorMessagePassword));
-        Assertions.assertEquals("Пароль не указан", errorMessagePasswordWebElement.getText());
+        TwentyFirstVekPage twentyFirstVekPage = new TwentyFirstVekPage(driver);
+        twentyFirstVekPage.clickEnterButtonCookie();
+        twentyFirstVekPage.clickAccountButton();
+        twentyFirstVekPage.clickEnterButton();
+        twentyFirstVekPage.clickButtonModule();
+        twentyFirstVekPage.getErrorMessageLogin();
+        String actual = twentyFirstVekPage.getErrorMessageLogin();
+        Assertions.assertEquals("Электронная почта не указана", actual);
+        twentyFirstVekPage.getErrorMessagePassword();
+        String actualPassword = twentyFirstVekPage.getErrorMessagePassword();
+        Assertions.assertEquals("Пароль не указан", actualPassword);
         driver.close();
     }
 
@@ -35,47 +32,33 @@ public class TwentyFirstVekTest {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://www.21vek.by/");
-        TwentyFirstVekPage twentyFirstVekPage = new TwentyFirstVekPage();
-        WebElement enterButtonCookieWebElement = driver.findElement(By.xpath(twentyFirstVekPage.enterButtonCookie));
-        enterButtonCookieWebElement.click();
-        WebElement accountButtonWebElement = driver.findElement(By.xpath(twentyFirstVekPage.accountButton));
-        accountButtonWebElement.click();
-        WebElement enterButtonWebElement = driver.findElement(By.xpath(twentyFirstVekPage.enterButton));
-        enterButtonWebElement.click();
-        Thread.sleep(2000);
-        WebElement inputEmailWebElement = driver.findElement(By.xpath(twentyFirstVekPage.inputEmailXpath));
-        inputEmailWebElement.sendKeys("test@gmail.com");
-        WebElement buttonModuleWebElement = driver.findElement(By.xpath(twentyFirstVekPage.buttonModule));
-        buttonModuleWebElement.click();
-        WebElement errorMessagePasswordWebElement = driver.findElement(By.xpath(twentyFirstVekPage.errorMessagePassword));
-        Assertions.assertEquals("Пароль не указан", errorMessagePasswordWebElement.getText());
+        TwentyFirstVekPage twentyFirstVekPage = new TwentyFirstVekPage(driver);
+        twentyFirstVekPage.clickEnterButtonCookie();
+        twentyFirstVekPage.clickAccountButton();
+        twentyFirstVekPage.clickEnterButton();
+        twentyFirstVekPage.sendKeysInputEmailXpath("test@gmail.com");
+        twentyFirstVekPage.clickButtonModule();
+        twentyFirstVekPage.getErrorMessagePassword();
+        String actual = twentyFirstVekPage.getErrorMessagePassword();
+        Assertions.assertEquals("Пароль не указан", actual);
         driver.close();
     }
 
     @Test
-
     public void test21VekLoginUser() throws InterruptedException {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://www.21vek.by/");
-        TwentyFirstVekPage twentyFirstVekPage = new TwentyFirstVekPage();
-        WebElement enterButtonCookieWebElement = driver.findElement(By.xpath(twentyFirstVekPage.enterButtonCookie));
-        enterButtonCookieWebElement.click();
-        WebElement accountButtonWebElement = driver.findElement(By.xpath(twentyFirstVekPage.accountButton));
-        accountButtonWebElement.click();
-        WebElement enterButtonWebElement = driver.findElement(By.xpath(twentyFirstVekPage.enterButton));
-        enterButtonWebElement.click();
-        WebElement inputEmailWebElement = driver.findElement(By.xpath(twentyFirstVekPage.inputEmailXpath));
-        inputEmailWebElement.sendKeys("bkmnkgmail.com");
-        WebElement inputPasswordWebElement = driver.findElement(By.xpath(twentyFirstVekPage.inputPasswordXpath));
-        inputPasswordWebElement.sendKeys("test");
-        WebElement buttonModuleWebElement = driver.findElement(By.xpath(twentyFirstVekPage.errorButtonEnter));
-        buttonModuleWebElement.click();
-        Thread.sleep(4000);
+        TwentyFirstVekPage twentyFirstVekPage = new TwentyFirstVekPage(driver);
+        twentyFirstVekPage.clickEnterButtonCookie();
+        twentyFirstVekPage.clickAccountButton();
+        twentyFirstVekPage.clickEnterButton();
+        twentyFirstVekPage.sendKeysInputEmailXpath("bkmnkgmail.com");
+        twentyFirstVekPage.sendKeysInputPasswordXpath("test");
+        twentyFirstVekPage.clickErrorButtonEnter();
+        String actual = twentyFirstVekPage.getErrorMessageLogin();
         Assertions.assertEquals(
-                "Неправильный формат электронной почты",
-                driver.findElement(By.xpath(twentyFirstVekPage.errorMessageLogin)).getText()
-        );
+                "Неправильный формат электронной почты", actual);
         driver.close();
     }
 }
