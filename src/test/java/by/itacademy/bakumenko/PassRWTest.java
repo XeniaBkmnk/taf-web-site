@@ -25,8 +25,6 @@ public class PassRWTest {
         Assertions.assertEquals("Авторизация", actual);
         driver.close();
     }
-<<<<<<< HEAD
-=======
 
     @Test
     public void testPassRwLoginEmptyError() throws InterruptedException {
@@ -55,5 +53,4 @@ public class PassRWTest {
         Assertions.assertEquals("Заполните поле", actualPassword);
         driver.close();
     }
->>>>>>> 1d4a81d (Add method testPassRwLoginEmptyError)
 }
