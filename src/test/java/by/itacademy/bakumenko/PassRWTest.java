@@ -13,12 +13,10 @@ public class PassRWTest {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://pass.rw.by/ru/");
-
         String enterButtonLocator = "//*[@id=\"db\"]/div[1]/div[1]/div/header/div/div[3]/div[3]/ul/li[2]/a";
         By enterButtonBy = By.xpath(enterButtonLocator);
         WebElement enterButtonWebElement = driver.findElement(enterButtonBy);
         enterButtonWebElement.click();
-
         String enterTitleFormLocator = "//*[@id=\"auth-popup\"]/div/div/div[1]/div";
         By enterTitleFormBy = By.xpath(enterTitleFormLocator);
         WebElement enterTitleFormWebElement = driver.findElement(enterTitleFormBy);
