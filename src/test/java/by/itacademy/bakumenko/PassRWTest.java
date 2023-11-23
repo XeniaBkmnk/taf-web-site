@@ -13,13 +13,10 @@ public class PassRWTest {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://pass.rw.by/ru/");
-        String enterButtonLocator = "//*[@id=\"db\"]/div[1]/div[1]/div/header/div/div[3]/div[3]/ul/li[2]/a";
-        WebElement enterButtonWebElement = driver.findElement(By.xpath(enterButtonLocator));
-        enterButtonWebElement.click();
-        String enterTitleFormLocator = "//*[@id=\"auth-popup\"]/div/div/div[1]/div";
-        WebElement enterTitleFormWebElement = driver.findElement(By.xpath(enterTitleFormLocator));
-        Thread.sleep(500);
-        String actual = enterTitleFormWebElement.getText();
+        PassRwPage passRwPage = new PassRwPage(driver);
+        passRwPage.clickEnterButtonWebElement();
+        passRwPage.getEnterTitleFormWebElement();
+        String actual = passRwPage.getEnterTitleFormWebElement();
         Assertions.assertEquals("Авторизация", actual);
         driver.close();
     }
@@ -29,25 +26,16 @@ public class PassRWTest {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://pass.rw.by/ru/");
-        String enterButtonLocator = "//*[@id=\"db\"]/div[1]/div[1]/div/header/div/div[3]/div[3]/ul/li[2]/a";
-        WebElement enterByttonWebElement = driver.findElement(By.xpath(enterButtonLocator));
-        enterByttonWebElement.click();
-        String inputEnter = "//*[@id=\"form-auth\"]/fieldset/div[3]/input";
-        By inputEnterBy = By.xpath(inputEnter);
-        WebElement inputEnterWebElement = driver.findElement(inputEnterBy);
-        inputEnterWebElement.click();
-        String errorMessageLoginLocator = "//*[@id=\"login-error\"]";
-        By errorMessageLoginBy = By.xpath(errorMessageLoginLocator);
+        PassRwPage passRwPage = new PassRwPage(driver);
+        passRwPage.clickEnterButtonWebElement();
         Thread.sleep(500);
-        WebElement errorMessageLoginWebElement = driver.findElement(errorMessageLoginBy);
-        String actuaiLogin = errorMessageLoginWebElement.getText();
-        Assertions.assertEquals("Заполните поле", actuaiLogin);
-        String errorMessageLoginPassword = "//*[@id=\"password-error\"]";
-        By errorMessagePasswordBy = By.xpath(errorMessageLoginPassword);
-        Thread.sleep(500);
-        WebElement errorMessagePasswordWebElement = driver.findElement(errorMessagePasswordBy);
-        String actualPassword = errorMessagePasswordWebElement.getText();
-        Assertions.assertEquals("Заполните поле", actualPassword);
+        passRwPage.clickInputEnterWebElement();
+        Assertions.assertEquals(
+                "Заполните поле", passRwPage.getErrorMessageLoginWebElemen()
+        );
+        Assertions.assertEquals(
+                "Заполните поле", passRwPage.getErrorMessagePasswordWebElement()
+        );
         driver.close();
     }
 
