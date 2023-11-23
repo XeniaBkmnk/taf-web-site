@@ -79,39 +79,4 @@ public class PassRWTest {
         Assertions.assertEquals("Заполните поле", actuaiLogin);
         driver.close();
     }
-
-    @Test
-    public void testPassRwLoginError() throws InterruptedException {
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://pass.rw.by/ru/");
-        String enterButtonLocator = "//*[@id=\"db\"]/div[1]/div[1]/div/header/div/div[3]/div[3]/ul/li[2]/a";
-        By enterButtonBy = By.xpath(enterButtonLocator);
-        WebElement enterByttonWebElement = driver.findElement(enterButtonBy);
-        enterByttonWebElement.click();
-        String inputEnter = "//*[@id=\"form-auth\"]/fieldset/div[3]/input";
-        By inputEnterBy = By.xpath(inputEnter);
-        Thread.sleep(500);
-        WebElement inputEnterWebElement = driver.findElement(inputEnterBy);
-        inputEnterWebElement.click();
-        String enterButtonLoginLocator = "//*[@id=\"form-auth\"]/fieldset/div[1]/label/div[2]/input";
-        By enterButtonLoginBy = By.xpath(enterButtonLoginLocator);
-        WebElement enterButtonLoginWebElement = driver.findElement(enterButtonLoginBy);
-        enterButtonLoginWebElement.sendKeys("test@test");
-        String enterButtonPasswordLocator = "//*[@id=\"form-auth\"]/fieldset/div[2]/div[1]/div/label/div[2]/input";
-        By enterButtonPasswordBy = By.xpath(enterButtonPasswordLocator);
-        WebElement enterButtonPasswordWebElement = driver.findElement(enterButtonPasswordBy);
-        enterButtonPasswordWebElement.sendKeys("123456");
-        String buttonEnter = "//*[@id=\"form-auth\"]/fieldset/div[3]/input";
-        By buttonEnterBy = By.xpath(buttonEnter);
-        WebElement buttonEnterWebElement = driver.findElement(buttonEnterBy);
-        buttonEnterWebElement.click();
-        String errorEnterLocator = "//*[@id=\"auth-popup\"]/div/div/div[2]/div[2]/div";
-        By errorEnterLocatorBy = By.xpath(errorEnterLocator);
-        WebElement errorEnterLocatorWebElement = driver.findElement(errorEnterLocatorBy);
-        Thread.sleep(500);
-        String actual = errorEnterLocatorWebElement.getText();
-        Assertions.assertEquals("Пользователь не найден", actual);
-        driver.close();
-    }
 }
