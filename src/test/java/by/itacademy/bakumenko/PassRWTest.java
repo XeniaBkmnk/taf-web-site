@@ -59,5 +59,4 @@ public class PassRWTest {
         Assertions.assertEquals("Заполните поле", actuaiLogin);
         driver.close();
     }
-
 }
