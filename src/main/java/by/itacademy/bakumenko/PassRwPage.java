@@ -62,7 +62,8 @@ public class PassRwPage {
         WebElement enterButtonPasswordWebElement = driver.findElement(By.xpath(enterButtonPasswordLocator));
         enterButtonPasswordWebElement.sendKeys(namePassword);
     }
-    public void sendKeysEnterButtonLoginLocator(String nameLogin){
+
+    public void sendKeysEnterButtonLoginLocator(String nameLogin) {
         WebElement enterButtonLoginWebElement = driver.findElement(By.xpath(enterButtonLoginLocator));
         enterButtonLoginWebElement.sendKeys(nameLogin);
     }
@@ -73,11 +74,13 @@ public class PassRwPage {
         String actualLogin = errorMessageLoginWebElement.getText();
         return actualLogin;
     }
-    public void clickButtonEnter(){
+
+    public void clickButtonEnter() {
         WebElement buttonEnterWebElement = driver.findElement(By.xpath(buttonEnter));
         buttonEnterWebElement.click();
     }
-    public String getErrorEnterWebElement(){
+
+    public String getErrorEnterWebElement() {
         WebElement errorEnterWebElement = driver.findElement(By.xpath(errorEnterLocator));
         String actual = errorEnterWebElement.getText();
         return actual;
