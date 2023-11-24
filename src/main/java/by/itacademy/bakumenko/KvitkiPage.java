@@ -8,9 +8,9 @@ public class KvitkiPage {
     private String enterButtonCookiLocator = "//*[@id=\"CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll\"]";
     private String enterButtonAdvertisLocator = "/html/body/div[7]/div";
     private String enterButtonLoginLocator = "/html/body/div[3]/div[2]/div/app-user-account-link/app-profile-link/svg-icon";
-    private String enterButtonPasswordLokator = "//*[@id=\"l0og99qs9h8-password\"]";
+    private String enterButtonPasswordLokator = "/html/body/div[9]/div[2]/div/mat-dialog-container/div/div/app-user-auth-form/div[2]/mat-tab-group/div/mat-tab-body[1]/div/app-user-login-form/app-collapsible/div/app-form-builder/form/app-collapsible[2]/app-password-input/div/input";
     private String enterTitleFormLocator = "//*[@id=\"mat-tab-label-0-0\"]/span[2]/span[1]";
-    private String enterButtonEmailLocator = "//*[@id=\"l0og99qs9h8-email\"]";
+    private String enterButtonEmailLocator = "/html/body/div[9]/div[2]/div/mat-dialog-container/div/div/app-user-auth-form/div[2]/mat-tab-group/div/mat-tab-body[1]/div/app-user-login-form/app-collapsible/div/app-form-builder/form/app-collapsible[1]/app-email-input/div/input";
     private String enterInputEnterLocator = "//*[@id=\"mat-tab-content-1-0\"]/div/app-user-login-form/app-collapsible/div/app-ui-button/button";
     private String errorMessageLoginLocator = "//*[@id=\"mat-tab-content-3-0\"]/div/app-user-login-form/app-collapsible/div/app-form-builder/form/app-collapsible[1]/app-email-input/app-field-error/app-collapsible";
     WebDriver driver;
