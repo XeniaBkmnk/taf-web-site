@@ -12,7 +12,7 @@ public class KvitkiTest {
         driver.manage().window().maximize();
         driver.get("https://www.kvitki.by/");
         KvitkiPage kvitkiPage = new KvitkiPage(driver);
-        kvitkiPage.clickEnterButtonCookiWebElement();
+        kvitkiPage.clickEnterButtonCookieWebElement();
         kvitkiPage.clickEnterButtonAdvertisWebElement();
         kvitkiPage.clickEnterButtonLoginWebElement();
         kvitkiPage.getEnterTitleFormWebElement();

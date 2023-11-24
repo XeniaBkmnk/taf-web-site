@@ -20,7 +20,7 @@ public class KvitkiPage {
         enterButtonAdvertisWebElement.click();
     }
 
-    public void clickEnterButtonCookiWebElement() {
+    public void clickEnterButtonCookieWebElement() {
         WebElement enterButtonCookiWebElement = driver.findElement(By.xpath(enterButtonCookiLocator));
         enterButtonCookiWebElement.click();
     }
@@ -36,4 +36,5 @@ public class KvitkiPage {
         String actual = enterTitleFormWebElement.getText();
         return actual;
     }
+
 }
