@@ -21,10 +21,11 @@ public class PassRwPage {
         this.driver = driver;
     }
 
-    public void clickEnterCheckBoxWebElement(){
+    public void clickEnterCheckBoxWebElement() {
         WebElement enterCheckBoxWebElement = driver.findElement(By.xpath(enterCheckBox));
         enterCheckBoxWebElement.click();
     }
+
     public void clickEnterButtonWebElement() {
         WebElement enterButtonWebElement = driver.findElement(By.xpath(enterButtonLocator));
         enterButtonWebElement.click();
@@ -55,10 +56,12 @@ public class PassRwPage {
         String actualPassword = errorMessagePasswordWebElement.getText();
         return actualPassword;
     }
-    public void sendKeysEnterButtonPasswordWebElement(String namePassword){
+
+    public void sendKeysEnterButtonPasswordWebElement(String namePassword) {
         WebElement enterButtonPasswordWebElement = driver.findElement(By.xpath(enterButtonPasswordLocator));
         enterButtonPasswordWebElement.sendKeys(namePassword);
     }
+
     public String getErrorMessageLoginWebElement() throws InterruptedException {
         Thread.sleep(500);
         WebElement errorMessageLoginWebElement = driver.findElement(By.xpath(errorMessageLoginLocator));
