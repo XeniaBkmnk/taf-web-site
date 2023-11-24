@@ -14,6 +14,8 @@ public class PassRWTest {
         driver.manage().window().maximize();
         driver.get("https://pass.rw.by/ru/");
         PassRwPage passRwPage = new PassRwPage(driver);
+        Thread.sleep(500);
+        passRwPage.clickEnterCheckBoxWebElement();
         passRwPage.clickEnterButtonWebElement();
         passRwPage.getEnterTitleFormWebElement();
         String actual = passRwPage.getEnterTitleFormWebElement();
@@ -27,6 +29,8 @@ public class PassRWTest {
         driver.manage().window().maximize();
         driver.get("https://pass.rw.by/ru/");
         PassRwPage passRwPage = new PassRwPage(driver);
+        Thread.sleep(500);
+        passRwPage.clickEnterCheckBoxWebElement();
         passRwPage.clickEnterButtonWebElement();
         Thread.sleep(500);
         passRwPage.clickInputEnterWebElement();
@@ -44,20 +48,16 @@ public class PassRWTest {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://pass.rw.by/ru/");
-        String enterButtonLocator = "//*[@id=\"db\"]/div[1]/div[1]/div/header/div/div[3]/div[3]/ul/li[2]/a";
-        WebElement enterByttonWebElement = driver.findElement(By.xpath(enterButtonLocator));
-        enterByttonWebElement.click();
-        String inputEnter = "//*[@id=\"form-auth\"]/fieldset/div[3]/input";
-        WebElement inputEnterWebElement = driver.findElement(By.xpath(inputEnter));
-        inputEnterWebElement.click();
-        String enterButtonPasswordLocator = "//*[@id=\"form-auth\"]/fieldset/div[2]/div[1]/div/label/div[2]/input";
-        WebElement enterButtonPasswordWebElement = driver.findElement(By.xpath(enterButtonPasswordLocator));
-        enterButtonPasswordWebElement.sendKeys("123456");
-        String errorMessageLoginLocator = "//*[@id=\"login-error\"]";
+        PassRwPage passRwPage = new PassRwPage(driver);
         Thread.sleep(500);
-        WebElement errorMessageLoginWebElement = driver.findElement(By.xpath(errorMessageLoginLocator));
-        String actuaiLogin = errorMessageLoginWebElement.getText();
+        passRwPage.clickEnterCheckBoxWebElement();
+        passRwPage.clickEnterButtonWebElement();
+        passRwPage.clickInputEnterWebElement();
+        passRwPage.sendKeysEnterButtonPasswordWebElement("123456");
+        passRwPage.getErrorMessageLoginWebElement();
+        String actuaiLogin = passRwPage.getErrorMessageLoginWebElement();
         Assertions.assertEquals("Заполните поле", actuaiLogin);
         driver.close();
     }
+
 }
