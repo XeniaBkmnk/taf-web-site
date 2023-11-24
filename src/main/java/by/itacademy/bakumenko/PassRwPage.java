@@ -21,7 +21,8 @@ public class PassRwPage {
         this.driver = driver;
     }
 
-    public void clickEnterCheckBoxWebElement() {
+    public void clickEnterCheckBoxWebElement() throws InterruptedException {
+        Thread.sleep(500);
         WebElement enterCheckBoxWebElement = driver.findElement(By.xpath(enterCheckBox));
         enterCheckBoxWebElement.click();
     }
@@ -61,11 +62,24 @@ public class PassRwPage {
         WebElement enterButtonPasswordWebElement = driver.findElement(By.xpath(enterButtonPasswordLocator));
         enterButtonPasswordWebElement.sendKeys(namePassword);
     }
+    public void sendKeysEnterButtonLoginLocator(String nameLogin){
+        WebElement enterButtonLoginWebElement = driver.findElement(By.xpath(enterButtonLoginLocator));
+        enterButtonLoginWebElement.sendKeys(nameLogin);
+    }
 
     public String getErrorMessageLoginWebElement() throws InterruptedException {
         Thread.sleep(500);
         WebElement errorMessageLoginWebElement = driver.findElement(By.xpath(errorMessageLoginLocator));
-        String actuaiLogin = errorMessageLoginWebElement.getText();
-        return actuaiLogin;
+        String actualLogin = errorMessageLoginWebElement.getText();
+        return actualLogin;
+    }
+    public void clickButtonEnter(){
+        WebElement buttonEnterWebElement = driver.findElement(By.xpath(buttonEnter));
+        buttonEnterWebElement.click();
+    }
+    public String getErrorEnterWebElement(){
+        WebElement errorEnterWebElement = driver.findElement(By.xpath(errorEnterLocator));
+        String actual = errorEnterWebElement.getText();
+        return actual;
     }
 }

@@ -59,4 +59,24 @@ public class PassRWTest {
         Assertions.assertEquals("Заполните поле", actuaiLogin);
         driver.close();
     }
+
+    @Test
+    public void testPassRwFullLogin() throws InterruptedException {
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://pass.rw.by/ru/");
+        PassRwPage passRwPage = new PassRwPage(driver);
+        passRwPage.clickEnterCheckBoxWebElement();
+        Thread.sleep(500);
+        passRwPage.clickEnterButtonWebElement();
+        Thread.sleep(500);
+        passRwPage.clickInputEnterWebElement();
+        passRwPage.sendKeysEnterButtonLoginLocator("test@gmail.com");
+        passRwPage.sendKeysEnterButtonPasswordWebElement("123456");
+        passRwPage.clickButtonEnter();
+        passRwPage.getErrorEnterWebElement();
+        String actual = passRwPage.getErrorEnterWebElement();
+        Assertions.assertEquals("Пользователь не найден", actual);
+        driver.close();
+    }
 }
