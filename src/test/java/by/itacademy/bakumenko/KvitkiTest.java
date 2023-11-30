@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 
 public class KvitkiTest extends BaseTest{
-
-    WebDriver driver;
     private KvitkiPage kvitkiPage;
 
     @BeforeEach
