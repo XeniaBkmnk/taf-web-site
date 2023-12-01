@@ -24,7 +24,6 @@ public class TerraPizzaTest extends BaseTest {
         Thread.sleep(500);
         terraPizzaPage.clickEnterOrder();
         Thread.sleep(500);
-        // terraPizzaPage.getTextOrderPizza();
         Assertions.assertEquals("Пицца Маргарита на тонком 32 см", terraPizzaPage.getTextOrderPizza());
         Assertions.assertEquals("Матча латте на кокосовом молоке", terraPizzaPage.getTextOrderDrink());
     }
