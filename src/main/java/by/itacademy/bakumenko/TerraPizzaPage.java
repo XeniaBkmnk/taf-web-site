@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class TerraPizzaPage {
+    private String buttonCookie = "/html/body/div[6]/div/button";
     private String enterMenuPizza = "/html/body/div[3]/div[2]/div/div/div/div/div/ul/li[10]/a";
     private String buttonPizzaMargaritaBasket = "//*[@id=\"menu-card-364\"]/div[3]/div[3]/div[2]/div[2]/button";
     private String enterMenuBar = "/html/body/div[3]/div[1]/div/div/div[1]/div/div/div/ul/li[16]/a";
@@ -15,6 +16,10 @@ public class TerraPizzaPage {
 
     public TerraPizzaPage(WebDriver driver) {
         this.driver = driver;
+    }
+
+    public void clickButtonCookie() {
+        driver.findElement(By.xpath(buttonCookie)).click();
     }
 
     public void clickEnterMenuPizza() {
@@ -44,4 +49,5 @@ public class TerraPizzaPage {
     public String getTextOrderDrink() {
         return driver.findElement(By.xpath(textOrderDrink)).getText();
     }
+
 }
