@@ -3,7 +3,6 @@ package by.itacademy.bakumenko;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
 
 public class KvitkiTest extends BaseTest{
     private KvitkiPage kvitkiPage;
