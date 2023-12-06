@@ -1,34 +1,30 @@
 package by.itacademy.bakumenko;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-public class PassRWTest {
+public class PassRWTest extends BaseTest {
+    PassRwPage passRwPage;
+
+    @BeforeEach
+    public void start() {
+        driver.get("https://pass.rw.by/ru/");
+        passRwPage = new PassRwPage(driver);
+    }
+
     @Test
     public void testPassRwAutorisation() throws InterruptedException {
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://pass.rw.by/ru/");
-        PassRwPage passRwPage = new PassRwPage(driver);
         Thread.sleep(500);
         passRwPage.clickEnterCheckBoxWebElement();
         passRwPage.clickEnterButtonWebElement();
         passRwPage.getEnterTitleFormWebElement();
         String actual = passRwPage.getEnterTitleFormWebElement();
         Assertions.assertEquals("Авторизация", actual);
-        driver.close();
     }
 
     @Test
     public void testPassRwLoginEmptyError() throws InterruptedException {
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://pass.rw.by/ru/");
-        PassRwPage passRwPage = new PassRwPage(driver);
         Thread.sleep(500);
         passRwPage.clickEnterCheckBoxWebElement();
         passRwPage.clickEnterButtonWebElement();
@@ -40,15 +36,10 @@ public class PassRWTest {
         Assertions.assertEquals(
                 "Заполните поле", passRwPage.getErrorMessagePasswordWebElement()
         );
-        driver.close();
     }
 
     @Test
     public void testPassRwEmptyLogin() throws InterruptedException {
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://pass.rw.by/ru/");
-        PassRwPage passRwPage = new PassRwPage(driver);
         Thread.sleep(500);
         passRwPage.clickEnterCheckBoxWebElement();
         passRwPage.clickEnterButtonWebElement();
@@ -57,15 +48,10 @@ public class PassRWTest {
         passRwPage.getErrorMessageLoginWebElement();
         String actuaiLogin = passRwPage.getErrorMessageLoginWebElement();
         Assertions.assertEquals("Заполните поле", actuaiLogin);
-        driver.close();
     }
 
     @Test
     public void testPassRwFullLogin() throws InterruptedException {
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://pass.rw.by/ru/");
-        PassRwPage passRwPage = new PassRwPage(driver);
         passRwPage.clickEnterCheckBoxWebElement();
         Thread.sleep(500);
         passRwPage.clickEnterButtonWebElement();
@@ -77,6 +63,6 @@ public class PassRWTest {
         passRwPage.getErrorEnterWebElement();
         String actual = passRwPage.getErrorEnterWebElement();
         Assertions.assertEquals("Пользователь не найден", actual);
-        driver.close();
     }
+
 }
