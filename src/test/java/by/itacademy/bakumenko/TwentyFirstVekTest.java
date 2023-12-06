@@ -1,19 +1,20 @@
 package by.itacademy.bakumenko;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-public class TwentyFirstVekTest {
+public class TwentyFirstVekTest extends BaseTest {
+    private TwentyFirstVekPage twentyFirstVekPage;
+
+    @BeforeEach
+    public void start() {
+        driver.get("https://www.21vek.by/");
+        twentyFirstVekPage = new TwentyFirstVekPage(driver);
+    }
+
     @Test
     public void test21VekLogin() throws InterruptedException {
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://www.21vek.by/");
-        TwentyFirstVekPage twentyFirstVekPage = new TwentyFirstVekPage(driver);
         twentyFirstVekPage.clickEnterButtonCookie();
         twentyFirstVekPage.clickAccountButton();
         twentyFirstVekPage.clickEnterButton();
@@ -24,15 +25,10 @@ public class TwentyFirstVekTest {
         twentyFirstVekPage.getErrorMessagePassword();
         String actualPassword = twentyFirstVekPage.getErrorMessagePassword();
         Assertions.assertEquals("Пароль не указан", actualPassword);
-        driver.close();
     }
 
     @Test
     public void test21VekLoginPassword() throws InterruptedException {
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://www.21vek.by/");
-        TwentyFirstVekPage twentyFirstVekPage = new TwentyFirstVekPage(driver);
         twentyFirstVekPage.clickEnterButtonCookie();
         twentyFirstVekPage.clickAccountButton();
         twentyFirstVekPage.clickEnterButton();
@@ -41,15 +37,10 @@ public class TwentyFirstVekTest {
         twentyFirstVekPage.getErrorMessagePassword();
         String actual = twentyFirstVekPage.getErrorMessagePassword();
         Assertions.assertEquals("Пароль не указан", actual);
-        driver.close();
     }
 
     @Test
     public void test21VekLoginUser() throws InterruptedException {
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://www.21vek.by/");
-        TwentyFirstVekPage twentyFirstVekPage = new TwentyFirstVekPage(driver);
         twentyFirstVekPage.clickEnterButtonCookie();
         twentyFirstVekPage.clickAccountButton();
         twentyFirstVekPage.clickEnterButton();
@@ -59,6 +50,6 @@ public class TwentyFirstVekTest {
         String actual = twentyFirstVekPage.getErrorMessageLogin();
         Assertions.assertEquals(
                 "Неправильный формат электронной почты", actual);
-        driver.close();
     }
+
 }
